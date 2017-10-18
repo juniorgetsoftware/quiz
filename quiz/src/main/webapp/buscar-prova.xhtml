@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	template="/WEB-INF/template/layout.xhtml">
+	
+	<ui:define name="page-name">
+		Buscar Provas
+	</ui:define>
+	
+	<ui:define name="page-title">
+		Buscar Provas
+	</ui:define>
+
+	<ui:define name="page-subtitle">
+		Buscar Provas	
+	</ui:define>
+
+	<ui:define name="page-menu">
+		<ui:include src="/WEB-INF/template/links-funcionais.xhtml" />
+	</ui:define>
+
+	<ui:define name="page-image">
+		<p:graphicImage library="img" name="prova.svg" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+
+			<div class="ui-fluid">
+				<p:panelGrid columns="3" layout="grid" columnClasses="ui-grid-col-7 ui-grid-col-1 ui-grid-col-1"
+					styleClass="ui-panelgrid-blank">
+				
+				<p:inputText id="buscar" placeholder="Ex.: POSCOMP, ITIL, ENEM..."
+					styleClass="text-overflow" value="#{provaMB.provaFilter.nome}" />
+
+				<p:commandButton icon="fa fa-search" styleClass="btn-grey" action="#{provaMB.buscarProvas()}"
+					process="buscar @this" update="provas" title="Buscar provas" />
+				
+				<div/>
+				
+				</p:panelGrid>
+			</div>
+
+			<h:panelGroup id="provas">
+				<p:repeat var="prova" value="#{provaMB.provas}" varStatus="indice">
+				
+				<div class="padding" jsf:rendered="#{indice.isFirst()}">
+					<p:separator />
+				</div>
+				
+					<div class="ui-g-12 ui-md-6 ui-lg-4 box ui-g-nopad">
+					
+					<p:link styleClass="my-link " outcome="/resolver-prova">
+						<div class="ui-g shadow-effect prova-shadow-effect font-white " style="#{prova.cor.css}">
+							<div class="ui-g-3 dash-values">
+								<div class="fa fa-file-text-o" />
+							</div>
+							<div class="ui-g-9 dash-desc">
+								<div class="dash-desc-2 text-overflow">
+									<p:outputLabel value="#{prova.nome}" >
+									
+									</p:outputLabel>
+								</div>
+								
+								<p:outputLabel value="#{prova.descricao.length() ge 24 ? prova.descricao.substring(0,24).concat('...') : prova.descricao}"> 
+									
+								</p:outputLabel>
+							</div>
+							
+						</div>
+							
+							<f:param name="id" value="#{prova.idCriptografado()}" />
+						</p:link>
+						 
+					</div>
+				</p:repeat>
+			</h:panelGroup>
+	 		
+		</h:form>
+	</ui:define>
+</ui:composition>

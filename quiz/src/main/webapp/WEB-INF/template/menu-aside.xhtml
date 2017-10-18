@@ -1,0 +1,158 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:jsf="http://xmlns.jcp.org/jsf">
+	
+	<aside class="aw-sidebar  js-sidebar ">
+		<nav class="aw-menu">
+			<div id='cssmenu'>
+				<ul>
+					<li><p:link href="/home.xhtml">
+							<i class="fa fa-fw fa-home" />
+							Home
+						</p:link>
+					</li>
+										
+					<li><p:link href="/buscar-prova.xhtml">
+							<i class="fa fa-fw fa-search" />
+							Buscar Prova
+						</p:link>
+					</li>
+
+				<li class="has-sub">
+				<p:link href="">
+					<i class="fa  fa-fw  fa-desktop" />
+					Cadastrar
+					<i class="fa  fa-fw  fa-angle-down right" />
+				</p:link>
+				
+				<ul>
+					
+					<li jsf:rendered="#{seguranca.cadastrarAlternativa}">
+						<p:link href="/cad/alternativa.xhtml">
+									<i class="fa fa-check-square-o" />
+								Alternativa
+						</p:link>
+					</li>
+					
+					<li jsf:rendered="#{seguranca.cadastrarCategoria}">
+						<p:link href="/cad/categoria.xhtml">
+									<i class="fa fa-fw fa-cubes" />
+								Categoria
+						</p:link>
+					</li>
+					
+					<li jsf:rendered="#{seguranca.cadastrarPagina}">
+						<p:link href="/cad/pagina.xhtml">
+									<i class="fa fa-fw fa-file-o" />
+								Página
+						</p:link>
+					</li>
+					
+					<li jsf:rendered="#{seguranca.cadastrarPerfil}">
+						<p:link href="/cad/perfil.xhtml">
+									<i class="fa fa-fw fa-group" />
+								Perfil
+						</p:link>
+					</li>
+					
+					<li jsf:rendered="#{seguranca.cadastrarProva}">
+						<p:link href="/cad/prova.xhtml">
+									<i class="fa fa-fw fa-file-text-o" />
+								Prova
+						</p:link>
+					</li>
+					
+					<li jsf:rendered="#{seguranca.cadastrarQuestao}">
+						<p:link href="/cad/questao.xhtml">
+									<i class="fa fa-fw fa-question-circle" />
+								Questão
+						</p:link>
+					</li>
+					
+					<li jsf:rendered="#{seguranca.cadastrarUsuario}">
+						<p:link href="/cad/usuario.xhtml">
+									<i class="fa fa-fw fa-user-secret" />
+								Usuário
+						</p:link>
+					</li>
+					 
+				</ul>
+			</li>
+			
+				<li class="has-sub">
+				<p:link href="">
+					<i class="fa  fa-fw  fa-list-alt" />
+					Listar
+					<i class="fa  fa-fw  fa-angle-down right" />
+				</p:link>
+				
+				<ul>
+					
+					<li jsf:rendered="#{seguranca.listarAlternativa}">
+						<p:link href="/list/alternativa.xhtml">
+									<i class="fa fa-check-square-o" />
+								Alternativa
+						</p:link>
+					</li>
+					
+					<li jsf:rendered="#{seguranca.listarCategoria}">
+						<p:link href="/list/categoria.xhtml">
+									<i class="fa fa-cubes" />
+								Categoria
+						</p:link>
+					</li>
+					
+					<li jsf:rendered="#{seguranca.listarPagina}">
+						<p:link href="/list/pagina.xhtml">
+									<i class="fa fa-fw fa-file-o" />
+								Página
+						</p:link>
+					</li>
+					
+					<li jsf:rendered="#{seguranca.listarPerfil}">
+						<p:link href="/list/perfil.xhtml">
+									<i class="fa fa-fw fa-group" />
+								Perfil
+						</p:link>
+					</li>
+					
+					<li jsf:rendered="#{seguranca.listarProva}">
+						<p:link href="/list/prova.xhtml">
+									<i class="fa fa-fw fa-file-text-o" />
+								Prova
+						</p:link>
+					</li>
+					
+					<li jsf:rendered="#{seguranca.listarQuestao}">
+						<p:link href="/list/questao.xhtml">
+									<i class="fa fa-fw fa-question-circle" />
+								Questão
+						</p:link>
+					</li>
+					
+					<li jsf:rendered="#{seguranca.listarUsuario}">
+						<p:link href="/list/usuario.xhtml">
+									<i class="fa fa-fw fa-user-secret" />
+								Usuário
+						</p:link>
+					</li>
+					 
+				</ul>
+			</li>
+			
+			<li>
+				<p:link href="#">
+					<i class="fa fa-cog" />
+					Configuração
+				</p:link>
+			</li>
+
+					
+				</ul>
+			</div>
+		</nav>
+	</aside>
+</ui:composition>

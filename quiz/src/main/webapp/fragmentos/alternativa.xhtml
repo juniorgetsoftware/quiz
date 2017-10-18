@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:form prependId="false">
+
+	<div class="ui-fluid">
+
+		<p:growl life="5000" id="msg-alternativa" />
+		<p:focus for="alt-descricao"/>
+		<p:dialog header="Alternativa" modal="true" resizable="false"
+			draggable="true" closable="true" closeOnEscape="true"
+			dynamic="true" responsive="true" id="alternativa" widgetVar="alternativa"
+			visible="false" width="800">
+
+			<p:panelGrid id="grid-alternativa" columns="3" layout="grid"
+				columnClasses="ui-grid-col-2, ui-grid-col-5, ui-grid-col-5"
+				styleClass="ui-panelgrid-blank">
+				
+				<p:outputLabel styleClass="my-label" value="Está correto?"/>					
+				<p:inputSwitch id="alt-correto" value="#{provaMB.alternativa.estaCorreta}" 
+					offLabel="Não" onLabel="Sim"/>
+				<p:message for="alt-correto" />
+				
+				<p:outputLabel value="Descrição" for="alt-descricao" styleClass="my-label" />
+				<p:inputText id="alt-descricao" required="true"
+					value="#{provaMB.alternativa.descricao}" styleClass="ui-grid-col-4"
+					requiredMessage="Campo 'Descrição' é obrigatório!" />
+				<p:message for="alt-descricao" />
+
+				<p:outputLabel value="Explicação" for="alt-explicacao" styleClass="my-label" />
+				<p:inputTextarea id="alt-explicacao" required="true"
+					value="#{provaMB.alternativa.explicacao}"
+					requiredMessage="Campo 'Explicação' é obrigatório!" />
+				<p:message for="alt-explicacao" />
+				
+			</p:panelGrid>
+			
+			<p:separator/>
+			
+			<h:panelGrid columns="2">
+				<p:commandButton value="Inserir" icon="fa fa-plus"
+					update="grid-alternativa alternativas @parent " 
+					rendered="#{provaMB.alternativa.descricao eq null}"
+					action="#{provaMB.adicionarAlternativa()}" />
+
+				<p:commandButton value="Atualizar" icon="fa fa-edit"
+					styleClass="btn-green" update="grid-alternativa alternativas @parent "
+					rendered="#{provaMB.alternativa.descricao ne null}"
+					action="#{provaMB.atualizarAlternativa()}"
+					oncomplete="PF('alternativa').hide();" />
+
+				<p:commandButton value="cancelar" styleClass="btn-red"
+					process="@none" icon="fa fa-close"
+					oncomplete="PF('alternativa').hide()" />
+			</h:panelGrid>
+
+			
+		</p:dialog>
+	</div>
+</h:form>
+</html>

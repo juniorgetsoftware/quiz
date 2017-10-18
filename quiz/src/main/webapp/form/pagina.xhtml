@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:form prependId="false">
+
+	<p:focus for="nome" />
+	<div class="ui-fluid">
+		<p:messages id="msg" life="7000" showDetail="true" showSummary="true" />
+		<p:panelGrid id="group" columns="3" styleClass="ui-panelgrid-blank"
+			columnClasses="ui-grid-col-2, ui-grid-col-6, ui-grid-col-4"
+			layout="grid">
+
+			<p:outputLabel for="nome" styleClass="my-label" value="Nome " />
+			<p:inputText id="nome" required="true"
+				requiredMessage="Campo 'Nome' é obrigatório!"
+				value="#{paginaMB.pagina.nome}" />
+			<p:message for="nome" />
+
+			<p:outputLabel for="nomeIdentificador" styleClass="my-label"
+				value="Nome Identificador" />
+			<p:inputText id="nomeIdentificador" required="true"
+				requiredMessage="Campo 'Nome Identificador' é obrigatório!"
+				value="#{paginaMB.pagina.nomeIdentificador}" />
+			<p:message for="nomeIdentificador" />
+
+			<p:outputLabel for="descricao" styleClass="my-label"
+				value="Descrição" />
+			<p:inputTextarea id="descricao" required="false"
+				requiredMessage="Campo 'Descrição' é obrigatório!"
+				value="#{paginaMB.pagina.descricao}" />
+			<p:message for="descricao" />
+
+			<p:outputLabel for="status" styleClass="my-label" value="Status" />
+			<p:selectOneRadio id="status" required="true"
+				requiredMessage="Campo 'Status' é obrigatório!"
+				value="#{paginaMB.pagina.status}">
+				<f:selectItems itemLabel="#{status.descricao}" var="status"
+					value="#{paginaMB.listarStatus()}" itemValue="#{status}" />
+			</p:selectOneRadio>
+			<p:message for="status" />
+
+			<p:outputLabel />
+			
+			</p:panelGrid>
+			
+			<p:panelGrid layout="grid" columns="2" columnClasses="ui-grid-col-3,ui-grid-col-3"
+			styleClass="ui-panelgrid-blank">
+				<p:commandButton value="Cadastrar" action="#{paginaMB.salvar()}"
+					update="group" validateClient="true" icon="fa fa-save"
+					rendered="#{paginaMB.pagina.id == null}" styleClass="btn-blue">
+				</p:commandButton>
+
+				<p:commandButton value="Editar" action="#{paginaMB.atualizar()}"
+					update="group" validateClient="true" icon="fa fa-edit"
+					rendered="#{paginaMB.pagina.id != null}" styleClass="btn-green">
+				</p:commandButton>
+
+				<p:button value="Cancelar" outcome="/list/pagina" icon="fa fa-close"
+					styleClass="btn-red ">
+				</p:button>
+
+			</p:panelGrid>
+ 
+	</div>
+</h:form>
+</html>

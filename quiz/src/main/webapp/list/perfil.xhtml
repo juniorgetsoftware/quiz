@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/layout.xhtml">
+	
+	<ui:define name="page-name">
+		List. Perfil
+	</ui:define>
+	
+	<ui:define name="page-menu">
+		<ui:include src="/WEB-INF/template/links-funcionais.xhtml" />
+	</ui:define>
+
+	<ui:define name="page-image">
+		<p:graphicImage library="img" name="perfil.svg" />
+	</ui:define>
+
+	<ui:define name="page-title">Perfil</ui:define>
+	<ui:define name="page-subtitle">Lista de Perfis</ui:define>
+	<ui:define name="content">
+		<h:form prependId="false">
+			<p:growl id="perfil-msg" life="7000" showDetail="true"
+				showSummary="true" />
+			<div class="ui-fluid">
+
+				<p:toolbar style="padding: 10px">
+					<f:facet name="left">
+						<p:panelGrid columns="3" styleClass="ui-panelgrid-blank" layout="grid" 
+							columnClasses="ui-grid-col-3, ui-grid-col-6, ui-grid-col-3">
+						
+							<p:outputLabel value="Filtrar por: " />
+						
+							<p:inputText id="filtro" styleClass="ui-grid-col-6"
+								placeholder="Nome da perfil" value="#{perfilMB.perfilFilter.nome}"/>
+						
+							<h:panelGrid columns="2">
+								<p:commandButton action="#{perfilMB.filtrar()}"
+									process="@this filtro" update="table" icon="fa fa-search"
+									styleClass="btn-grey" />
+								
+								<p:button icon="fa fa-plus" styleClass="btn-green" 
+									outcome="/cad/perfil"/>
+							</h:panelGrid>
+						
+						</p:panelGrid>
+					</f:facet>
+				</p:toolbar>
+
+				<br />
+
+				<p:dataTable id="table" var="perfil" lazy="true"
+					value="#{perfilMB.perfilsLazy}" reflow="true" rowHover="true"
+					perfiltorPosition="bottom" perfiltor="true"
+					perfiltorAlwaysVisible="false" rows="20" rowsPerPageLabel="de"
+					emptyMessage="Nenhum registro foi encontrado!"
+					perfiltorTemplate="{CurrentPageReport} {FirstPageLink} 
+						{PreviousPageLink} {PageLinks} {NextPageLink} 
+							{LastPageLink} {RowsPerPageDropdown}"
+					currentPageReportTemplate="({startRecord} - {endRecord} de {totalRecords}, Página {currentPage} de {totalPages})">
+
+					<f:facet name="header" />
+					
+					<p:column headerText="Status" colspan="1" priority="6">
+						<p:outputLabel value="#{perfil.status.descricao}" />
+					</p:column>
+
+					<p:column headerText="Nome" colspan="2">
+						<div class="text-overflow">
+							<p:link outcome="/edit/perfil" styleClass="my-link"  value="#{perfil.nome}" >
+								<f:param name="id" value="#{perfil.idCriptografado()}" />
+							</p:link>
+						</div>
+					</p:column>
+					 
+					<p:column headerText="Descrição" colspan="4" priority="5">
+						<p:outputLabel value="#{perfil.descricao}" />
+					</p:column>
+
+				</p:dataTable>
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

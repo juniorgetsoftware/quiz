@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/layout.xhtml">
+
+	<ui:define name="page-name">
+		Home
+	</ui:define>
+
+	<ui:define name="page-title" />
+	<ui:define name="page-subtitle" />
+	<ui:define name="page-menu">
+		<ui:include src="/WEB-INF/template/links-funcionais.xhtml" />
+	</ui:define>
+
+	<ui:define name="page-image">
+		<p:graphicImage library="img" name="telephone.svg" />
+	</ui:define>
+
+	<ui:define name="full-content">
+		<h:form>
+			<div class="ui-g">
+
+				<div class="ui-g-12 ">
+
+					<div class="ui-g-6 ui-md-6 ui-lg-6 ui-sm-12">
+						<div class="ui-g-12 card shadow-effect">
+
+							<div class="ui-g-12 ui-md-12 ui-lg-12">
+								<div class="text-title">Indicador</div>
+							</div>
+
+							<div class="ui-g-12 ui-md-12 ui-lg-12 box ui-g-nopad font-white ">
+								<div class="ui-g bg-blue shadow-effect">
+									<div class="ui-g-3 dash-values">
+										<div class="fa fa-plus-circle" />
+									</div>
+									<div class="ui-g-9 dash-desc ">
+										<p:outputLabel value="Indicador" />
+										<div class="dash-desc-2">
+											<p:outputLabel value="R$ 12.374,56">
+											</p:outputLabel>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="ui-g-6  ui-md-6 ui-lg-6 ui-sm-12">
+						<div class="ui-g-12 card shadow-effect">
+
+							<div class="ui-g-12 ui-md-12 ui-lg-12">
+								<div class="text-title">Indicador</div>
+							</div>
+
+							<div class="ui-g-12 ui-md-12 ui-lg-12 box ui-g-nopad font-white ">
+								<div class="ui-g bg-yellow shadow-effect">
+									<div class="ui-g-3 dash-values">
+										<div class="fa fa-minus-circle" />
+									</div>
+									<div class="ui-g-9 dash-desc">
+										<p:outputLabel value="Indicador" />
+										<div class="dash-desc-2">
+											<p:outputLabel value="321,56">
+											</p:outputLabel>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+
+				<div class="ui-g-12 font-white ">
+					<div class="ui-g-12 card shadow-effect">
+						<div class="ui-g-12 ui-md-12 ui-lg-12 box ui-g-nopad">
+							<div class="ui-g bg-purple-2 shadow-effect">
+								<div class="ui-g-12 dash-desc">
+									<div class="dash-table">
+										<h5>Lista de Indicadores</h5>
+										<p:dataTable var="conta" rowHover="true" rows="3"
+											reflow="true" emptyMessage="Nenhum registro foi encontrado!">
+											<p:column headerText="Descrição" colspan="3" />
+											<p:column headerText="Data" colspan="1" priority="3" />
+											<p:column headerText="Valor" colspan="1" />
+										</p:dataTable>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="ui-g-12 ">
+					<div class="ui-g-12 card shadow-effect">
+						<div class="ui-g-12 ui-md-12 ui-lg-12">
+							<div class="text-title">Outros Indicadores</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-6 ui-lg-4 box ui-g-nopad font-white ">
+							<div class="ui-g bg-green shadow-effect">
+								<div class="ui-g-3 dash-values">
+									<div class="fa fa-arrow-circle-down" />
+								</div>
+								<div class="ui-g-9 dash-desc">
+									<p:outputLabel value="Indicador" />
+									<div class="dash-desc-2">
+										<p:outputLabel value="123,45">
+										</p:outputLabel>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="ui-g-12 ui-md-6 ui-lg-4 box ui-g-nopad font-white ">
+							<div class="ui-g bg-red shadow-effect">
+								<div class="ui-g-3 dash-values">
+									<div class="fa fa-arrow-circle-up" />
+								</div>
+								<div class="ui-g-9 dash-desc">
+									<p:outputLabel value="Indicador" />
+									<div class="dash-desc-2">
+										<p:outputLabel value="456,78">
+										</p:outputLabel>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="ui-g-12 ui-md-12 ui-lg-4 box ui-g-nopad font-white ">
+							<div class="ui-g bg-blue shadow-effect">
+								<div class="ui-g-3 dash-values">
+									<div class="fa fa-forward" />
+								</div>
+								<div class="ui-g-9 dash-desc">
+									<p:outputLabel value="Indicador" />
+									<div class="dash-desc-2">
+										<p:outputLabel value="987,65">
+										</p:outputLabel>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+				<div class="ui-g-12 font-white ">
+					<div class="ui-g-12 card shadow-effect">
+						<div class="ui-g-12 ui-md-12 ui-lg-12 box ui-g-nopad">
+							<div class="ui-g bg-yellow shadow-effect">
+								<div class="ui-g-12 dash-desc">
+									<div class="dash-table">
+										<h5>Lista de Indicadores</h5>
+										<p:dataTable var="conta" rowHover="true" rows="3"
+											reflow="true" emptyMessage="Nenhum registro foi encontrado!">
+											<p:column headerText="Descrição" colspan="3" />
+											<p:column headerText="Data" colspan="1" priority="3" />
+											<p:column headerText="Valor" colspan="1" />
+										</p:dataTable>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+			</div>
+		</h:form>
+	</ui:define>
+</ui:composition>

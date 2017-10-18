@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/layout.xhtml">
+
+	<ui:define name="page-name">
+		Resolver Provas
+	</ui:define>
+
+	<ui:define name="page-title">
+		Resolver Provas
+	</ui:define>
+
+	<ui:define name="page-subtitle">
+		Resolver Provas	
+	</ui:define>
+
+	<ui:define name="page-menu">
+		<ui:include src="/WEB-INF/template/links-funcionais.xhtml" />
+	</ui:define>
+
+	<ui:define name="page-image">
+		<p:graphicImage library="img" name="prova.svg" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+
+			<h1>#{provaMB.prova.nome}</h1>
+			<h3>#{provaMB.prova.descricao}</h3>
+
+			 <ui:repeat var="questao" value="#{provaMB.prova.questoes}" varStatus="q">
+			 	<p:outputLabel value="#{q.index+1} - " styleClass="my-label"/>
+			 	<p:outputLabel value="#{questao.enunciado}" styleClass="my-label"/>
+			 	<br/>
+			 	
+			 	<ui:repeat var="alternativa" value="#{questao.alternativas}" varStatus="a">
+			 		<h:panelGrid columns="3">
+				 		<p:selectBooleanCheckbox />
+					 	<p:outputLabel value="#{alternativa.descricao}" />
+			 		</h:panelGrid>
+			 	</ui:repeat>
+			 	<br/>
+			 </ui:repeat>
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>

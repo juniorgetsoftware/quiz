@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<f:facet name="first">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+
+	<link rel="shortcut icon" type="image/x-icon"
+		href="#{facesContext.externalContext.requestContextPath}/resources/img/logo.ico" />
+
+	<title>
+		<ui:insert name="page-name" />
+	</title>
+
+	<h:outputStylesheet library="primefaces" name="grid/grid.css" />
+	<h:outputStylesheet library="css" name="custom.css" />
+	<h:outputStylesheet library="css" name="menu.css" />
+	<h:outputStylesheet library="css" name="layout.css" />
+	<h:outputStylesheet library="font_icons"
+		name="MaterialIcons-Regular.css" />
+
+	<h:outputScript target="body" library="primefaces"
+		name="jquery/jquery.js" />
+
+	<h:outputScript target="body" library="js" name="app.js" />
+	<h:outputScript target="body" library="js" name="locale.js" />
+	<h:outputScript target="body" library="js" name="menu.js" />
+	<h:outputScript target="body" library="js" name="jquery.maskMoney.js" />
+
+</h:head>
+
+<h:body onload="configurarMoeda()">
+	<main> 
+	<header class="aw-topbar">
+		<h:form prependId="false">
+			<h:link outcome="/home">
+				<div class="logo center">
+					<div class="logo-text font-white ">
+						<div class="fa fa-flask" /> QuiZ</div>
+				</div>
+			</h:link>
+
+		</h:form>
+
+		<ui:insert name="menu-super">
+			<ui:include src="/WEB-INF/template/menu.xhtml" />
+		</ui:insert>
+
+	</header>
+
+	<ui:insert name="menu-aside">
+		<ui:include src="/WEB-INF/template/menu-aside.xhtml" />
+	</ui:insert>
+
+
+	<section class="aw-content js-content" >
+
+		<ui:insert name="full-content">
+
+			<div class="ui-g">
+				<div class="ui-g-12 card shadow-effect">
+
+					<h:form prependId="false">
+						<ui:insert name="breadcrumb" />
+					</h:form>
+
+					<ui:insert name="page-data">
+						<div class="padding">
+						<div class="my-head">
+							<div class="my-head-title">
+								<div class="page-image">
+									<ui:insert name="page-image"/>
+								</div>
+
+								<h1 class="aw-page-title">
+									<ui:insert name="page-title"/>
+								</h1>
+
+								<h3 class="aw-page-subtitle">
+									<ui:insert name="page-subtitle"/>
+								</h3>
+
+								<div class="my-head-menu">
+									<ui:insert name="page-menu" />
+								</div>
+							</div>
+						</div>
+						</div>
+
+						<div class="padding">
+							<ui:insert name="content" />
+						</div>
+
+					</ui:insert>
+					
+					<ui:insert name="footer" >
+						<ui:include src="/WEB-INF/template/loading.xhtml" />
+					</ui:insert>
+					
+				</div>
+			</div>
+		</ui:insert>
+	</section>
+
+	<div id="toTop" style="display: none;">
+		<i class="fa fa-arrow-circle-up" />
+	</div>
+
+	</main>
+	
+	<ui:insert name="footer" >
+		<ui:include src="/WEB-INF/template/footer.xhtml" />
+	</ui:insert>
+
+</h:body>
+
+</html>

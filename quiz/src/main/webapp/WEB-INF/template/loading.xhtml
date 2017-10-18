@@ -1,0 +1,27 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+	
+	<h:head>
+		<h:outputStylesheet library="css" name="load.css"/>
+	</h:head>
+
+	<p:ajaxStatus oncomplete="configurarMoeda()" />
+
+	<p:ajaxStatus onstart="PF('statusDialog').show()"
+		onsuccess="PF('statusDialog').hide()" />
+
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+		closable="false" resizable="false" showHeader="false" height="150">
+
+		<div class="bubblingG">
+			<span id="bubblingG_1" /> 
+			<span id="bubblingG_2" /> 
+			<span id="bubblingG_3" />
+		</div>
+
+	</p:dialog>
+
+</ui:composition>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:form prependId="false">
+	<div class="ui-fluid">
+
+		<p:growl life="5000" id="msg-questao" />
+		<p:dialog header="Questões" modal="true" resizable="false"
+			width="1000" draggable="true" closable="true" closeOnEscape="true"
+			dynamic="true" responsive="true" id="questao" widgetVar="questao"
+			visible="false" fitViewport="true">
+			<p:focus for="categoria"/>
+
+			<p:panelGrid id="grid-questao" columns="1" layout="grid"
+				columnClasses="ui-grid-col-12"
+				styleClass="ui-panelgrid-blank">
+
+				<p:panelGrid columns="3" layout="grid"
+					columnClasses="ui-grid-col-2, ui-grid-col-6, ui-grid-col-4"
+					styleClass="ui-panelgrid-blank">
+
+					<p:outputLabel for="categoria" styleClass="my-label"
+						value="Categoria " />
+					<p:autoComplete value="#{provaMB.questao.categoria}"
+						id="categoria" autocomplete="true" scrollHeight="300"
+						placeholder="Digite o nome da categoria"
+						completeMethod="#{categoriaMB.autoCompletar}"
+						forceSelection="true" minQueryLength="3" maxResults="30"
+						dropdown="true" required="true"
+						requiredMessage="Campo 'Categoria' é obrigatório!"
+						converterMessage="Não foi possível selecionar(Erro ao converter o objeto)"
+						converter="genericConverter" var="cat" itemLabel="#{cat.nome}"
+						itemValue="#{cat}">
+					</p:autoComplete>
+					<p:message for="categoria" />
+
+
+					<p:outputLabel for="enunciado" styleClass="my-label"
+						value="Enunciado " />
+					<p:inputTextarea id="enunciado" required="true"
+						placeholder="Digite aqui o enunciado da questão"
+						requiredMessage="Campo 'Enunciado' é obrigatório!"
+						value="#{provaMB.questao.enunciado}" />
+					<p:message for="enunciado" />
+
+
+					<p:outputLabel for="descricao-q" styleClass="my-label"
+						value="Descrição" />
+					<p:inputTextarea id="descricao-q" required="false"
+						requiredMessage="Campo 'Descrição' é obrigatório!"
+						placeholder="Descreva a questão"
+						value="#{provaMB.questao.descricao}" />
+					<p:message for="descricao-q" />
+
+				</p:panelGrid>
+
+				<h:panelGroup>
+					<h:panelGrid columns="2">
+						<p:outputLabel value="Adicionar alternativa" styleClass="my-label" />
+						<p:commandButton icon="fa fa-plus" styleClass="btn-grey"
+							oncomplete="PF('alternativa').show()" process="@this"
+							update="alternativa" action="#{provaMB.novoAlternativa()}">
+							<p:resetInput target="alternativa" />
+						</p:commandButton>
+					</h:panelGrid>
+
+
+					<p:dataTable var="alternativa"
+						value="#{provaMB.questao.alternativas}"
+						emptyMessage="Nenhum registro foi adicionado!" id="alternativas"
+						reflow="true" rowHover="true" paginatorAlwaysVisible="false"
+						paginatorPosition="bottom" paginator="true" rows="30"
+						scrollable="true" scrollHeight="150"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
+						{PreviousPageLink} {PageLinks} {NextPageLink} 
+							{LastPageLink} {RowsPerPageDropdown}"
+						currentPageReportTemplate="({startRecord} - {endRecord} de {totalRecords}, Página {currentPage} de {totalPages})">
+
+						<f:facet name="header">Alternativas</f:facet>
+
+						<p:column headerText="Está correta?" colspan="1">
+							<p:outputLabel value="#{alternativa.estaCorreta ? 'Sim' : 'Não'}"
+								styleClass="my-label" />
+						</p:column>
+
+						<p:column headerText="Descrição" colspan="6">
+							<p:outputLabel value="#{alternativa.descricao}" />
+						</p:column>
+ 
+						<p:column headerText="Editar" colspan="1">
+
+							<p:commandButton icon="fa fa-edit" styleClass="btn-grey"
+								process="@this" oncomplete="PF('alternativa').show();"
+								update="grid-alternativa">
+								<f:setPropertyActionListener value="#{alternativa}"
+									target="#{provaMB.alternativa}" />
+							</p:commandButton>
+						</p:column>
+
+						<p:column headerText="Remover" colspan="1">
+
+							<p:commandButton icon="fa fa-trash" styleClass="btn-red"
+								update="alternativas" action="#{provaMB.removerAlternativa()}"
+								process="@this">
+								<f:setPropertyActionListener value="#{alternativa}"
+									target="#{provaMB.alternativa}" />
+							</p:commandButton>
+						</p:column>
+
+					</p:dataTable>
+				</h:panelGroup>
+			</p:panelGrid>
+
+			<h:panelGrid columns="2">
+				<p:commandButton value="Inserir" icon="fa fa-plus"
+					update="grid-questao questaos @parent "
+					rendered="#{provaMB.questao.enunciado eq null}"
+					action="#{provaMB.adicionarQuestao()}" />
+
+				<p:commandButton value="Atualizar" icon="fa fa-edit"
+					styleClass="btn-green" update="grid-questao questaos @parent "
+					rendered="#{provaMB.questao.enunciado ne null}"
+					action="#{provaMB.atualizarQuestao()}"
+					oncomplete="PF('questao').hide();" />
+
+				<p:commandButton value="cancelar" styleClass="btn-red"
+					process="@none" icon="fa fa-close"
+					oncomplete="PF('questao').hide()" />
+			</h:panelGrid>
+
+		</p:dialog>
+
+	</div>
+</h:form>
+
+<ui:include src="/fragmentos/alternativa.xhtml" />
+
+
+</html>

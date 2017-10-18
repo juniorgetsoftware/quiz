@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	template="/WEB-INF/template/layout.xhtml">
+
+	<ui:define name="page-name">
+		Cad. Perfil
+	</ui:define>
+
+	<ui:define name="page-title">
+		Perfil
+	</ui:define>
+
+	<ui:define name="page-subtitle">
+		Manutenção de Perfil
+	</ui:define>
+
+	<ui:define name="page-menu">
+		<ui:include src="/WEB-INF/template/links-funcionais.xhtml" />
+	</ui:define>
+
+	<ui:define name="page-image">
+		<p:graphicImage library="img" name="perfil.svg" />
+	</ui:define>
+
+	<ui:define name="content">
+		<ui:include src="/form/perfil.xhtml" />
+	</ui:define>
+	
+</ui:composition>

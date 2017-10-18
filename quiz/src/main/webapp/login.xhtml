@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/layout.xhtml">
+
+	<ui:define name="page-name">
+		Login
+	</ui:define>
+
+	<ui:define name="page-title"/>
+	<ui:define name="menu-super" />
+	<ui:define name="menu-aside" />
+	<ui:define name="footer" />
+
+	<ui:define name="page-subtitle">
+		Subtítulo da página
+	</ui:define>
+
+	<ui:define name="page-menu">
+		<ui:include src="/WEB-INF/template/links-funcionais.xhtml" />
+	</ui:define>
+
+	<ui:define name="page-image">
+		<p:graphicImage library="img" name="boy.svg" />
+	</ui:define>
+
+	<f:metadata>
+		<f:viewParam name="dummy" />
+		<f:event listener="#{loginBean.preRender}" type="preRenderView" />
+	</f:metadata>
+
+	<ui:define name="full-content">
+
+		<h:form id="frm" prependId="false">
+
+			<div class="ui-fluid">
+
+				<p:growl id="msg" autoUpdate="true" globalOnly="false" life="5000" />
+
+				<p:dialog visible="true" closable="false" closeOnEscape="false" width="400"
+					draggable="false" header="Login" resizable="false" responsive="true" >
+
+					<p:panelGrid layout="grid" columns="2"
+						styleClass="ui-panelgrid-blank" 
+						columnClasses="ui-grid-col-4, ui-grid-col-8">
+						<p:outputLabel for="username" value="E-mail" styleClass="my-label" />
+						<p:inputText id="username" value="#{loginBean.email}"
+							required="true" />
+
+						<p:outputLabel for="password" value="Senha" styleClass="my-label" />
+						<p:password id="password" required="true" />
+						
+						<div/>
+						<p:commandButton id="btn-logar" icon="fa fa-arrow-right" value="Logar" iconPos="right"
+							update="frm" action="#{loginBean.login}" ajax="false" />
+
+					</p:panelGrid>
+
+				</p:dialog>
+			</div>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

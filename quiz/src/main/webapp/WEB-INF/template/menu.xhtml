@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+
+<h:body>
+	<h:form >
+		<ul id="top-menu" class="ShowOnDesktop">
+			<li>
+				<h:link outcome="/home" >
+					<p:outputLabel value="Home"/>
+					<div class="fa fa-map-marker" />
+				</h:link>				
+			</li>
+			
+			<li>
+				<p:link id="logout" href="/logout" >
+				<p:outputLabel value="Sair"/>
+					<div class="fa fa-arrow-left" />
+				</p:link>
+			</li>
+
+			<li>
+				<a class="js-toggle" >
+					<i class="fa fa-navicon" />
+				</a>
+			</li>
+		</ul>
+		
+		<ul id="top-menu" class="ShowOnMobile">
+			<li>
+				<h:commandLink styleClass="js-toggle" >
+					<div class="fa fa-navicon" />
+				</h:commandLink>
+			</li>
+		</ul>
+	</h:form>
+</h:body>
+
+</html>

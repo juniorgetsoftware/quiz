@@ -1,0 +1,71 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+	<rewrite match="^/(.*)/$" substitute="/$1" redirect="301" />
+
+	<!-- PÁGINAS COMUNS -->
+	<url-mapping>
+		<pattern value="/acesso-negado" />
+		<view-id value="/acesso-negado.xhtml" />
+	</url-mapping>
+	
+	<url-mapping>
+		<pattern value="/configuracao" />
+		<view-id value="/configuracao.xhtml" />
+	</url-mapping>
+
+	<url-mapping>
+		<pattern value="/erro" />
+		<view-id value="/erro.xhtml" />
+	</url-mapping>
+
+	<url-mapping>
+		<pattern value="/home" />
+		<view-id value="/home.xhtml" />
+	</url-mapping>
+
+	<url-mapping>
+		<pattern value="/login" />
+		<view-id value="/login.xhtml" />
+	</url-mapping>
+
+	<url-mapping>
+		<pattern value="/nao-encontrado" />
+		<view-id value="/nao-encontrado.xhtml" />
+	</url-mapping>
+
+	<!-- PÁGINA -->
+	<url-mapping>
+		<pattern value="/cadastrar/pagina" />
+		<view-id value="/cad/pagina.xhtml" />
+	</url-mapping>
+
+	<url-mapping>
+		<pattern value="/editar/pagina/#{id}" />
+		<view-id value="/edit/pagina.xhtml" />
+	</url-mapping>
+
+	<url-mapping>
+		<pattern value="/listar/pagina" />
+		<view-id value="/list/pagina.xhtml" />
+	</url-mapping>
+
+	<!-- USUÁRIO -->
+	<url-mapping>
+		<pattern value="/cadastrar/usuario" />
+		<view-id value="/cad/usuario.xhtml" />
+	</url-mapping>
+
+	<url-mapping>
+		<pattern value="/editar/usuario/#{id}" />
+		<view-id value="/edit/usuario.xhtml" />
+	</url-mapping>
+
+	<url-mapping>
+		<pattern value="/listar/usuario" />
+		<view-id value="/list/usuario.xhtml" />
+	</url-mapping>
+
+</pretty-config>

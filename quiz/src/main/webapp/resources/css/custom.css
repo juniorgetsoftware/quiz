@@ -1,0 +1,119 @@
+/* TABVIEW */
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a {
+	color: #555;
+}
+.ui-tabs.ui-tabs-top>.ui-tabs-nav {
+    padding: .2em .2em 0;
+    border: none !important;
+}
+
+@media ( max-width : 640px) {
+	.ui-tabs.ui-tabs-top>.ui-tabs-nav li {
+		width: 100%;
+	}
+}
+
+/* PANELGRID */
+.ui-panelgrid.panelgrid-noborder .ui-grid-responsive {
+	border: none;
+}
+
+@media ( max-width : 640px) {
+	.ui-panelgrid.panelgrid-noborder .ui-grid-responsive .ui-grid-row {
+		border: none;
+	}
+}
+
+.indent {
+	margin: 20px 0px 10px 0px;
+}
+
+.ui-g .box {
+	text-align: left;
+	border: 10px solid rgba(0, 0, 0, 0);
+}
+
+.ui-g .card {
+	background: #ffffff;
+	padding: 10px;
+}
+
+.ui-datepicker-today a.ui-state-highlight {
+	text-shadow: none !important;
+	background: #c2185b !important;
+	color: white !important;
+	font-weight: bold !important;
+}
+
+.ui-growl {
+	position: fixed !important;
+	top: 100px !important;
+	right: 23px !important;
+	width: 301px !important;
+}
+
+.dash-table  .ui-datatable th.ui-state-default {
+	background-color: rgba(40, 44, 44, 0.2) !important;
+	color: #ffffff;
+	font-size: 20px;
+	border: none;
+}
+
+.ui-datatable  .ui-state-hover .my-link {
+	color: #186ba0 !important;
+	cursor: pointer !important;
+}
+
+.ui-datatable-tablewrapper {
+    overflow: visible !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    position: relative !important;
+    background: transparent!important;
+    padding: 0 0 8px 0 !important;
+    margin: 20px 20px 5px 20px !important;
+    border: solid #e5e5e5 !important;
+    border-width: 0 0 1px 0 !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.ui-tabs-panels {
+    border: solid 1px #dcdcdc;
+    margin: 0px 3px 3px 3px;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a {
+    color: #fff;
+    background: #1f89ce;
+    font-weight: bold;
+}
+
+@media (max-width: 640px){
+.ui-datatable-reflow .ui-datatable-data td[role="gridcell"] .ui-column-title {
+    padding: .4em;
+    min-width: 30%;
+    display: inline-block;
+    margin: -.4em 1em -.4em -.4em;
+    font-weight: bold;
+}
+}
+
+h3 {
+    margin-left: 10px;
+}
+
+.ui-datatable tbody td {
+    border-color: #d9d9d9 !important;
+}
+
+.label-color {
+    text-align: center;
+    padding: 5px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5%;
+}
+ 

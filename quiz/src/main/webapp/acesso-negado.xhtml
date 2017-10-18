@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/layout.xhtml">
+
+	<ui:define name="page-name">
+		Acesso negado
+	</ui:define>
+
+	<ui:define name="page-title" />
+	<ui:define name="menu-super" />
+	<ui:define name="menu-aside" />
+	<ui:define name="footer" />
+
+	<ui:define name="page-subtitle" />
+
+	<ui:define name="page-menu">
+		<ui:include src="/WEB-INF/template/links-funcionais.xhtml" />
+	</ui:define>
+
+	<ui:define name="page-image">
+		<p:graphicImage library="img" name="boy.svg" />
+	</ui:define>
+
+	<f:metadata>
+		<f:viewParam name="dummy" />
+		<f:event listener="#{loginBean.preRender}" type="preRenderView" />
+	</f:metadata>
+
+	<ui:define name="full-content">
+
+		<h:form id="frm" prependId="false">
+
+			<div class="ui-fluid">
+
+				<p:dialog visible="true" closable="false" closeOnEscape="false"
+					draggable="false" resizable="false" responsive="true" header="Erro 403">
+					<center>
+						<h1>Acesso Negado</h1>
+						<h3>Você não possui permissão para acessar esta págia</h3>
+						<h5>Entre em contato com o administrador!</h5>
+					</center>
+					<br />
+
+					<p:button icon="fa fa-home" value="Página inicial" outcome="/home" />
+
+				</p:dialog>
+
+			</div>
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
